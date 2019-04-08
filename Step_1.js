@@ -11,13 +11,13 @@ function getAndPrintHTMLChunks (){
     response.setEncoding('utf8');
     var data = '';
     response.on('data', function (data) {
-      data += data;
-      console.log('Chunk Received.');
-      console.log(data);
+      if (response.statusCode !== 200){
+        console.log('Response Failed' + statusCode);
+      } else{
+        console.log(data);
+      }
     });
-
-
-})
+  })
 };
 
 getAndPrintHTMLChunks();
